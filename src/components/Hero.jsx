@@ -1,52 +1,71 @@
-import Spline from "@splinetool/react-spline";
-import { motion } from "framer-motion";
+import React from 'react';
+import Spline from '@splinetool/react-spline';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden">
-      {/* Spline 3D Scene */}
+    <section className="relative isolate h-[92vh] w-full overflow-hidden" id="home">
+      {/* 3D Scene */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: "100%", height: "100%" }} />
+        <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Gradient overlays */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/50 via-white/10 to-white/80 dark:from-zinc-950/60 dark:via-zinc-950/10 dark:to-zinc-950/80" />
+      {/* Soft gradient auras (non-blocking) */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gradient-to-tr from-fuchsia-500/30 via-purple-500/20 to-cyan-400/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full bg-gradient-to-tr from-cyan-400/20 via-sky-400/10 to-purple-500/10 blur-3xl" />
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-24 grid lg:grid-cols-2 items-center gap-10">
-        <div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
-          >
-            Next‑gen tech, crafted for the bold
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="mt-6 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 max-w-xl"
-          >
-            Explore premium devices, pro accessories and playful interactive experiences. Built with performance and design at the forefront.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="mt-8 flex flex-wrap gap-3"
-          >
-            <a href="#products" className="inline-flex items-center justify-center rounded-full bg-zinc-900 text-white px-6 py-3 text-sm font-medium shadow-lg shadow-zinc-900/10 hover:shadow-zinc-900/20">
-              Shop the drop
-            </a>
-            <a href="#new" className="inline-flex items-center justify-center rounded-full border border-zinc-300 dark:border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50">
-              What's new
-            </a>
-          </motion.div>
-        </div>
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center md:px-6">
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[11px] font-medium text-white/70 backdrop-blur"
+        >
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+          In-stock AI hardware • Ships in 24h
+        </motion.span>
 
-        <div className="hidden lg:block" />
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
+          className="max-w-3xl bg-gradient-to-br from-white via-white to-white/70 bg-clip-text text-4xl font-semibold leading-tight text-transparent sm:text-5xl md:text-6xl"
+        >
+          Tech that feels alive.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.7 }}
+          className="mt-4 max-w-2xl text-balance text-base text-white/70 sm:text-lg"
+        >
+          Explore next‑gen devices built for AI creation, voice, and spatial computing — designed with a minimalist, futuristic aesthetic.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.7 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
+          <a
+            href="#showcase"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-[0_10px_40px_-10px_rgba(255,255,255,0.35)] transition hover:bg-white/90"
+          >
+            Shop the drop
+            <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 20 20" fill="currentColor"><path d="M7 4l6 6-6 6" /></svg>
+          </a>
+          <a
+            href="#features"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white/85 backdrop-blur transition hover:bg-white/10"
+          >
+            Why NovaTech
+          </a>
+        </motion.div>
       </div>
     </section>
   );

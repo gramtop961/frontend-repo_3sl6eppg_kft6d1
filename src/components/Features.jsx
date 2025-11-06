@@ -1,58 +1,47 @@
-import { Cpu, Headphones, Shield, Zap } from "lucide-react";
+import React from 'react';
+import { Cpu, ShieldCheck, Zap, Sparkles } from 'lucide-react';
 
 const features = [
   {
-    title: "Blazing Performance",
-    desc: "Latest chipsets and thermal design for sustained speed.",
-    icon: Zap,
+    icon: <Cpu className="h-5 w-5" />,
+    title: 'AI-Ready Performance',
+    desc: 'Optimized silicon and thermals for real-time voice, vision, and LLM workloads.',
   },
   {
-    title: "Immersive Sound",
-    desc: "Spatial audio tuned for music, movies and gaming.",
-    icon: Headphones,
+    icon: <ShieldCheck className="h-5 w-5" />,
+    title: 'Secure by Default',
+    desc: 'Hardware-level encryption, privacy switches, and verified firmware.',
   },
   {
-    title: "Pro‑grade Silicon",
-    desc: "Custom CPUs and GPUs engineered for creators.",
-    icon: Cpu,
+    icon: <Zap className="h-5 w-5" />,
+    title: 'Fast & Efficient',
+    desc: 'All-day battery with rapid charge, Wi‑Fi 7, and sub-10ms local latency.',
   },
   {
-    title: "Security First",
-    desc: "Hardware root-of-trust and privacy by default.",
-    icon: Shield,
+    icon: <Sparkles className="h-5 w-5" />,
+    title: 'Premium Build',
+    desc: 'Minimal, precision-milled chassis with soft-touch finishes and ambient glow.',
   },
 ];
 
 export default function Features() {
   return (
-    <section id="products" className="relative py-24">
-      <div className="absolute inset-x-0 -top-40 -z-[1] h-80 bg-gradient-to-b from-fuchsia-500/10 via-cyan-400/10 to-transparent blur-3xl" />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Why choose PulseTech
-        </h2>
-        <p className="mt-3 text-zinc-600 dark:text-zinc-400 max-w-2xl">
-          Every product is designed to elevate your workflow and play with uncompromising build and materials.
-        </p>
+    <section id="features" className="relative z-10 mx-auto max-w-7xl px-4 py-20 md:px-6">
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Why choose NovaTech</h2>
+        <p className="mt-3 text-white/70">Purpose-built devices that make AI feel effortless and human.</p>
+      </div>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map(({ title, desc, icon: Icon }) => (
-            <div
-              key={title}
-              className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-fuchsia-500/10 transition-all"
-            >
-              <div className="h-11 w-11 rounded-xl grid place-items-center bg-gradient-to-tr from-fuchsia-500 to-cyan-400 text-white">
-                <Icon size={20} />
-              </div>
-              <h3 className="mt-5 font-semibold text-zinc-900 dark:text-white">
-                {title}
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                {desc}
-              </p>
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {features.map((f, i) => (
+          <div key={i} className="group rounded-2xl border border-white/10 bg-white/[0.03] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] backdrop-blur transition hover:bg-white/[0.05]">
+            <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500/30 via-purple-500/30 to-cyan-400/30 text-white">
+              {f.icon}
             </div>
-          ))}
-        </div>
+            <h3 className="text-sm font-semibold text-white">{f.title}</h3>
+            <p className="mt-1 text-sm leading-6 text-white/70">{f.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,12 +1,13 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import Showcase from "./components/Showcase";
-import Footer from "./components/Footer";
+import React from 'react';
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import Features from './components/Features.jsx';
+import Showcase from './components/Showcase.jsx';
+import Footer from './components/Footer.jsx';
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50">
+    <div className="min-h-screen bg-black text-white antialiased">
       <Navbar />
       <main>
         <Hero />
@@ -17,5 +18,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

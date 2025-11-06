@@ -1,66 +1,46 @@
-import { ShoppingCart, Menu } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from 'react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const links = [
-    { name: "Products", href: "#products" },
-    { name: "New", href: "#new" },
-    { name: "Deals", href: "#deals" },
-    { name: "Support", href: "#support" },
-  ];
-
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl/80 bg-white/60 dark:bg-zinc-900/60 border-b border-white/20 dark:border-zinc-800">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="inline-flex items-center gap-2">
-          <span className="h-7 w-7 rounded-md bg-gradient-to-tr from-violet-600 via-fuchsia-500 to-cyan-400" />
-          <span className="font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 text-lg">PulseTech</span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+        <a href="#" className="group inline-flex items-center gap-2">
+          <div className="h-6 w-6 rounded-full bg-gradient-to-tr from-fuchsia-500 via-purple-500 to-cyan-400 shadow-[0_0_40px_-10px] shadow-cyan-400 transition-transform group-hover:scale-110" />
+          <span className="text-sm font-semibold tracking-wider text-white/90">NovaTech</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.name}
-              href={l.href}
-              className="text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors"
-            >
-              {l.name}
-            </a>
-          ))}
-        </div>
+        <nav className="hidden items-center gap-8 md:flex">
+          <a href="#features" className="text-sm text-white/70 hover:text-white">Features</a>
+          <a href="#showcase" className="text-sm text-white/70 hover:text-white">New</a>
+          <a href="#contact" className="text-sm text-white/70 hover:text-white">Contact</a>
+        </nav>
 
         <div className="flex items-center gap-3">
-          <button className="relative inline-flex items-center gap-2 rounded-full bg-zinc-900 text-white px-4 py-2 shadow-lg shadow-zinc-900/10 hover:shadow-zinc-900/20 transition">
+          <button className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/80 hover:bg-white/10">
             <ShoppingCart size={18} />
             <span className="hidden sm:inline">Cart</span>
-            <span className="absolute -top-1 -right-1 h-5 w-5 text-xs grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-400 rounded-full">2</span>
           </button>
-
           <button
-            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-zinc-200 dark:border-zinc-800"
+            className="md:hidden rounded-md border border-white/10 bg-white/5 p-2 text-white/80"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label="Toggle Menu"
           >
-            <Menu />
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-      </nav>
+      </div>
 
       {open && (
-        <div className="md:hidden px-4 pb-4">
-          <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl p-3 space-y-1">
-            {links.map((l) => (
-              <a
-                key={l.name}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/50"
-              >
-                {l.name}
-              </a>
-            ))}
+        <div className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur">
+          <div className="mx-auto max-w-7xl px-4 py-3 md:px-6">
+            <div className="grid gap-2">
+              <a href="#features" className="rounded-md px-2 py-2 text-sm text-white/80 hover:bg-white/5">Features</a>
+              <a href="#showcase" className="rounded-md px-2 py-2 text-sm text-white/80 hover:bg-white/5">New</a>
+              <a href="#contact" className="rounded-md px-2 py-2 text-sm text-white/80 hover:bg-white/5">Contact</a>
+            </div>
           </div>
         </div>
       )}

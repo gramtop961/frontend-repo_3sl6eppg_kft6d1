@@ -1,70 +1,63 @@
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const products = [
+const items = [
   {
-    name: "Nebula Pro Headset",
-    tag: "Spatial Audio",
-    img: "https://images.unsplash.com/photo-1518446258860-7f07b6148e30?q=80&w=1400&auto=format&fit=crop",
+    title: 'Nova One – AI Ear Companion',
+    price: '$179',
+    img: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    name: "Flux Mechanical Keyboard",
-    tag: "Hot‑swappable",
-    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1400&auto=format&fit=crop",
+    title: 'Halo Dock – Magnetic Base',
+    price: '$89',
+    img: 'https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?q=80&w=1200&auto=format&fit=crop',
   },
   {
-    name: "Ion Max Laptop",
-    tag: "RTX Studio",
-    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1400&auto=format&fit=crop",
+    title: 'Pulse Band – Haptic Control',
+    price: '$129',
+    img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    title: 'Aether Case – Soft Touch',
+    price: '$39',
+    img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=1200&auto=format&fit=crop',
   },
 ];
 
 export default function Showcase() {
   return (
-    <section id="new" className="py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              Fresh drops
-            </h2>
-            <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-              Limited runs, bold finishes and performance tuned.
-            </p>
-          </div>
-          <a href="#" className="hidden sm:inline-flex rounded-full border border-zinc-300 dark:border-zinc-700 px-5 py-2 text-sm text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50">
-            View all
-          </a>
+    <section id="showcase" className="relative mx-auto max-w-7xl px-4 pb-24 md:px-6">
+      <div className="mb-6 flex items-end justify-between">
+        <div>
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">Fresh drops</h2>
+          <p className="mt-1 text-white/70">Limited runs, premium materials, designed for AI life.</p>
         </div>
+        <a href="#" className="hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur hover:bg-white/10 sm:inline-flex">View all</a>
+      </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p, idx) => (
-            <motion.article
-              key={p.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="group overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl"
-            >
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {items.map((it, i) => (
+          <motion.article
+            key={i}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: i * 0.05 }}
+            className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+          >
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <img src={it.img} alt={it.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-90" />
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{it.title}</h3>
+                  <p className="text-xs text-white/70">{it.price}</p>
+                </div>
+                <button className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-black shadow hover:bg-white/90">Add</button>
               </div>
-              <div className="p-5">
-                <span className="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-xs text-zinc-700 dark:text-zinc-300">
-                  {p.tag}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold text-zinc-900 dark:text-white">
-                  {p.name}
-                </h3>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+            </div>
+          </motion.article>
+        ))}
       </div>
     </section>
   );
